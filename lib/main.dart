@@ -33,7 +33,7 @@ class WidgetTree extends StatelessWidget {
               ),
             ),
             Divider(
-              height: 55.0,
+              height: 60.0,
               color: Colors.white,
               thickness: 1.0,
             ),
