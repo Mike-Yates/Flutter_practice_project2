@@ -7,8 +7,16 @@ void main() {
 }
 
 
-class WidgetTree extends StatelessWidget {
+class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super(key: key);
+
+  @override
+  State<WidgetTree> createState() => _WidgetTreeState();
+}
+
+class _WidgetTreeState extends State<WidgetTree> {
+  // data gets defined here
+  int goalsScored = 1095;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +28,15 @@ class WidgetTree extends StatelessWidget {
         backgroundColor: Colors.grey[800],
         elevation: 0.0,
         shadowColor: Colors.transparent,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState( (){ // this triggers the build statement.
+            goalsScored++;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.pinkAccent,
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0,40.0,30.0,0.0),
@@ -44,7 +61,7 @@ class WidgetTree extends StatelessWidget {
 
             Text("Total Goals", style: TextStyle(color: Colors.grey, letterSpacing: 2.0,)),
             SizedBox(height:10.0),
-            Text('1095', style: TextStyle(color: Colors.yellow, letterSpacing: 2.0, fontSize: 28.0, fontWeight: FontWeight.bold)),
+            Text('$goalsScored', style: TextStyle(color: Colors.yellow, letterSpacing: 2.0, fontSize: 28.0, fontWeight: FontWeight.bold)),
             SizedBox(height:30.0),
 
             Row(
@@ -59,22 +76,5 @@ class WidgetTree extends StatelessWidget {
       ),
 
     );
-  }
-}
-
-class Test extends StatefulWidget { // this is the widget, it creates a state that is able to hold data
-  const Test({Key? key}) : super(key: key);
-
-  @override
-  _TestState createState() => _TestState();  // _TestState() instantiates the class TestState which is a state object
-  // this is building a state object for our stateful widget
-}
-
-class _TestState extends State<Test> {
-  @override
-  int counter = 1;
-
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
