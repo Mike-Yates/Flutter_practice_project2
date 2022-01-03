@@ -42,9 +42,9 @@ class WidgetTree extends StatelessWidget {
             Text("Cristiano Ronaldo", style: TextStyle(color: Colors.yellow, letterSpacing: 2.0, fontSize: 28.0, fontWeight: FontWeight.bold)),
             SizedBox(height:30.0),
 
-            Text("Current Team", style: TextStyle(color: Colors.grey, letterSpacing: 2.0,)),
+            Text("Total Goals", style: TextStyle(color: Colors.grey, letterSpacing: 2.0,)),
             SizedBox(height:10.0),
-            Text("Manchester United", style: TextStyle(color: Colors.yellow, letterSpacing: 2.0, fontSize: 28.0, fontWeight: FontWeight.bold)),
+            Text('1095', style: TextStyle(color: Colors.yellow, letterSpacing: 2.0, fontSize: 28.0, fontWeight: FontWeight.bold)),
             SizedBox(height:30.0),
 
             Row(
@@ -59,5 +59,22 @@ class WidgetTree extends StatelessWidget {
       ),
 
     );
+  }
+}
+
+class Test extends StatefulWidget { // this is the widget, it creates a state that is able to hold data
+  const Test({Key? key}) : super(key: key);
+
+  @override
+  _TestState createState() => _TestState();  // _TestState() instantiates the class TestState which is a state object
+  // this is building a state object for our stateful widget
+}
+
+class _TestState extends State<Test> {
+  @override
+  int counter = 1;
+
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
