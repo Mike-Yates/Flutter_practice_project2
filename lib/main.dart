@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -14,7 +15,12 @@ class WidgetTree extends StatefulWidget {
 }
 
 class _WidgetTreeState extends State<WidgetTree> {
-  List<String> quotes = ['super inspiring quote 1', 'Amazingly worded num 2', 'another quote 3'];
+  List<Quote> quotes =
+  [
+    Quote(text: 'super inspiring quote 1', author: 'Mike'),
+    Quote(text: 'Amazingly worded num 2', author: "Mik"),
+    Quote(text: 'another quote 3', author: 'Mikee'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +32,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         backgroundColor: Colors.amberAccent,
       ),
       body:Column(
-        children: quotes.map((quote) => Text(quote)).toList(),
+        children: quotes.map((quote) => Text('${quote.text} - ${quote.author}')).toList(),
       )
     );
   }
