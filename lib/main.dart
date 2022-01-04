@@ -6,75 +6,28 @@ void main() {
   ));
 }
 
-
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super(key: key);
 
   @override
-  State<WidgetTree> createState() => _WidgetTreeState();
+  _WidgetTreeState createState() => _WidgetTreeState();
 }
 
 class _WidgetTreeState extends State<WidgetTree> {
-  // data gets defined here
-  int goalsScored = 1095;
-
+  List<String> quotes = ['super inspiring quote 1', 'Amazingly worded num 2', 'another quote 3'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text("ID Card"),
+        title: Text('Quotes'),
+        //backgroundColor: Colors.grey[400],
         centerTitle: true,
-        backgroundColor: Colors.grey[800],
-        elevation: 0.0,
-        shadowColor: Colors.transparent,
+        backgroundColor: Colors.amberAccent,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState( (){ // this triggers the build statement.
-            goalsScored++;
-          });
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.pinkAccent,
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0,40.0,30.0,0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/ronaldo.jpg'),
-                radius: 40.0,
-              ),
-            ),
-            Divider(
-              height: 60.0,
-              color: Colors.white,
-              thickness: 1.0,
-            ),
-            Text("NAME", style: TextStyle(color: Colors.grey, letterSpacing: 2.0,)),
-            SizedBox(height:10.0),
-            Text("Cristiano Ronaldo", style: TextStyle(color: Colors.yellow, letterSpacing: 2.0, fontSize: 28.0, fontWeight: FontWeight.bold)),
-            SizedBox(height:30.0),
-
-            Text("Total Goals", style: TextStyle(color: Colors.grey, letterSpacing: 2.0,)),
-            SizedBox(height:10.0),
-            Text('$goalsScored', style: TextStyle(color: Colors.yellow, letterSpacing: 2.0, fontSize: 28.0, fontWeight: FontWeight.bold)),
-            SizedBox(height:30.0),
-
-            Row(
-              children: <Widget>[
-                Icon(Icons.email, color: Colors.grey[400]),
-                SizedBox(width:10.0),
-                Text("CR7Goat@gmail.com", style: TextStyle(color: Colors.grey, letterSpacing: 1.0, fontWeight: FontWeight.bold)),
-              ],
-            ),
-          ],
-        ),
-      ),
-
+      body:Column(
+        children: quotes.map((quote) => Text(quote)).toList(),
+      )
     );
   }
 }
