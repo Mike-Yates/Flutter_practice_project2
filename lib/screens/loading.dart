@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class loading extends StatefulWidget {
-  const loading({Key? key}) : super(key: key);
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
 
   @override
-  _loadingState createState() => _loadingState();
+  _LoadingState createState() => _LoadingState();
 }
 
-class _loadingState extends State<loading> {
+class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('loading screen')
+        body: Text('loading screen')
     );
   }
 }
