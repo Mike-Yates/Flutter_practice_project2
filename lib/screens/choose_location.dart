@@ -10,28 +10,6 @@ class LocationSelection extends StatefulWidget {
 class _LocationSelectionState extends State<LocationSelection> {
   int counter = 0;
 
-  void getData() async{
-    // simulate we're requesting user's username
-    String username = await Future.delayed(Duration(seconds: 2), (){
-      return "username received";
-    });
-
-    // simulate we are getting their bio
-    String bio = await Future.delayed(Duration(seconds: 1), (){
-      return "I like coding";
-    });
-
-    print('$username, $bio');
-
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-    print('init state run (debugging)');
-  }
-
   @override
   Widget build(BuildContext context) {
     print('build ran (debugging)');
