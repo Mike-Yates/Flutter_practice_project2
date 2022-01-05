@@ -10,6 +10,8 @@ class locationSelection extends StatefulWidget {
 class _locationSelectionState extends State<locationSelection> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Text('location selection screen.')
+    );
   }
 }
