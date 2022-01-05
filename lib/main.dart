@@ -33,7 +33,14 @@ class _WidgetTreeState extends State<WidgetTree> {
         backgroundColor: Colors.amberAccent,
       ),
       body:Column(
-        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(
+            quote: quote,
+            delete: (){  // pass a function as a parameter
+              setState(() {
+                quotes.remove(quote);
+              });
+          },
+        )).toList(),
       )
     );
   }
