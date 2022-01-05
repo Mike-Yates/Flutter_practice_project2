@@ -7,6 +7,34 @@ void main() {
   ));
 }
 
+Card quoteCard(quote){
+  return Card(
+    margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+    // color: Colors.blue,
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            quote.text,
+            style: TextStyle(
+                color: Colors.grey[600]
+            )
+          ),
+          const SizedBox(height: 12.0),
+          Text(
+              quote.author,
+              style: TextStyle(
+                  color: Colors.grey[800]
+              )
+          ),
+        ]
+      ),
+    )
+  );
+}
+
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super(key: key);
 
@@ -32,7 +60,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         backgroundColor: Colors.amberAccent,
       ),
       body:Column(
-        children: quotes.map((quote) => Text('${quote.text} - ${quote.author}')).toList(),
+        children: quotes.map((quote) => quoteCard(quote)).toList(),
       )
     );
   }
