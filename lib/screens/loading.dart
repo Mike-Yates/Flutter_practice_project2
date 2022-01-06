@@ -14,7 +14,8 @@ class _LoadingState extends State<Loading> {
     WorldTime instance = WorldTime(location: 'London', url: 'Europe/London', flag: 'England.png');
     await instance.getTime();
     Navigator.pushReplacementNamed(context, '/home', arguments: {
-      'location':instance.location, 'flag':instance.flag, 'time':instance.time
+      'location':instance.location, 'flag':instance.flag, 'time':instance.time,
+      'isDayTime':instance.isDayTime
     });
   }
 
@@ -23,7 +24,6 @@ class _LoadingState extends State<Loading> {
     super.initState();
     setUpWorldTime();
   }
-
 
   @override
   Widget build(BuildContext context) {
