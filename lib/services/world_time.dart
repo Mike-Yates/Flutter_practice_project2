@@ -18,8 +18,15 @@ class WorldTime{
     try{
       Response response = await get(Uri.parse('http://worldtimeapi.org/api/timezone/$url'));
       Map data = jsonDecode(response.body);
+      DateTime now = DateTime.parse(data['datetime']); // casting in dart is done using parse
 
-      DateTime now = DateTime.parse(data['utc_datetime']); // casting in dart is done using parse
+      String offset_str = data['utc_offset'].substring(1,3);
+      int offset_int = int.parse(offset_str);
+      if(data['utc_offset'].substring(0,1) == '-'){
+        offset_int = offset_int * -1;
+      }
+      now = now.add(Duration(hours: offset_int));
+
       time = DateFormat.jm().format(now);
       isDayTime = (now.hour > 7 && now.hour < 18) ? true : false;
     } catch (e){

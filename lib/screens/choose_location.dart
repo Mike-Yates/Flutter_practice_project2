@@ -9,6 +9,22 @@ class LocationSelection extends StatefulWidget {
 }
 
 class _LocationSelectionState extends State<LocationSelection> {
+  void updateTime(index) async{
+    WorldTime instance = locations[index]; // this is not creating a new instance
+    // above stores the original instance in our local variable
+    await instance.getTime();
+    // navigate to home, send the new data.
+    // first, pop the choose location screen off the stack. this returns us to the home page
+    // apss the new data to the home screen in the pop
+    Navigator.pop(context, {
+      'location':instance.location, 'flag':instance.flag, 'time':instance.time,
+      'isDayTime':instance.isDayTime
+    });
+    // if we used Navigator.pushReplacementNamed then we would slowly being adding more home screens to the stack
+    // because the change location screen would be popped, but a new home screen would be rendered.
+
+  }
+
   List<WorldTime> locations = [
     WorldTime(url: 'Europe/London', location: 'London', flag: 'uk.png'),
     WorldTime(url: 'Europe/Berlin', location: 'Athens', flag: 'greece.png'),
@@ -38,7 +54,9 @@ class _LocationSelectionState extends State<LocationSelection> {
             padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
             child: Card(
               child: ListTile(
-                onTap: (){},
+                onTap: (){
+                  updateTime(index);
+                },
                 leading: CircleAvatar(
                   backgroundImage: AssetImage('assets/${locations[index].flag}'),
                 ),

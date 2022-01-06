@@ -13,7 +13,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    try{ data = ModalRoute.of(context)!.settings.arguments as Map; } // the ! checks to see if it is null
+    try{
+      data = data.isEmpty ? ModalRoute.of(context)!.settings.arguments as Map : data;
+    } // the ! checks to see if it is null
     catch (e){ print('error triggered in home.dart: $e'); }
     // print(data);
     String imagePath = data['isDayTime'] ? 'daytime.jpg' : 'night.jpg';
@@ -33,8 +35,12 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   TextButton.icon(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/location');
+                    onPressed: () async {
+                      dynamic newData = await Navigator.pushNamed(context, '/location');
+                      // this will return with the new map data after the suer selects a city from the choose location screen
+                      setState(() {
+                        data = newData;
+                      });
                     },
                     icon: Icon(Icons.edit_location, color: Colors.grey[300]),
                     label: Text(
