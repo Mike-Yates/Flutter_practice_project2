@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Text(data['time'], style: const TextStyle(
                         fontSize: 65.0,
-                        color: Colors.white, 
+                        color: Colors.white,
                       ))
                     ],
                   ),

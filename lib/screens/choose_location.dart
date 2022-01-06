@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/world_time.dart';
 
 class LocationSelection extends StatefulWidget {
   const LocationSelection({Key? key}) : super(key: key);
@@ -8,7 +9,16 @@ class LocationSelection extends StatefulWidget {
 }
 
 class _LocationSelectionState extends State<LocationSelection> {
-  int counter = 0;
+  List<WorldTime> locations = [
+    WorldTime(url: 'Europe/London', location: 'London', flag: 'uk.png'),
+    WorldTime(url: 'Europe/Berlin', location: 'Athens', flag: 'greece.png'),
+    WorldTime(url: 'Africa/Cairo', location: 'Cairo', flag: 'egypt.png'),
+    WorldTime(url: 'Africa/Nairobi', location: 'Nairobi', flag: 'kenya.png'),
+    WorldTime(url: 'America/Chicago', location: 'Chicago', flag: 'usa.png'),
+    WorldTime(url: 'America/New_York', location: 'New York', flag: 'usa.png'),
+    WorldTime(url: 'Asia/Seoul', location: 'Seoul', flag: 'south_korea.png'),
+    WorldTime(url: 'Asia/Jakarta', location: 'Jakarta', flag: 'indonesia.png'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +31,24 @@ class _LocationSelectionState extends State<LocationSelection> {
         elevation: 0.0, // removes shadow, makes it appear flat on page
         title: Text('please choose a location'),
       ),
-      body: TextButton(
-        onPressed: (){
-          setState(() {
-            counter++;
-          });
+      body: ListView.builder(
+        itemCount: locations.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
+            child: Card(
+              child: ListTile(
+                onTap: (){},
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/${locations[index].flag}'),
+                ),
+                title: Text(locations[index].location),
+              ),
+            ),
+          );
         },
-        child: Text('counter: $counter'),
       )
+
     );
   }
 }
